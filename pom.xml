@@ -6,7 +6,7 @@
 
   <groupId>com.rafaeldakaj</groupId>
   <artifactId>authutils</artifactId>
-  <version>0.1.1a</version>
+  <version>0.1.2a</version>
 
   <name>AuthUtils</name>
   <description>A Java API used to serialize objects into a JSON Web Token</description>

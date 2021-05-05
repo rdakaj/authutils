@@ -47,7 +47,7 @@ public class AnnotationReader {
             com.auth0.jwt.interfaces.Claim claim = claims.get(key);
             for(Field f : object.getClass().getFields()){
                 Claim annotation = f.getAnnotation(Claim.class);
-                if(annotation != null && !annotation.value().equals("")){
+                if(annotation != null && ((annotation.value().equals("") && f.getName().equals(key)) || annotation.value().equals(key))){
                     try {
                         boolean wasAccessible = f.canAccess(object);
                         if(!wasAccessible) f.setAccessible(true);

@@ -11,7 +11,6 @@ public class TokenParser {
 
     private final Algorithm algorithm;
     private JWTVerifier verifier;
-    private Class<?> type;
     
     public TokenParser(String secret){
         this.algorithm = Algorithm.HMAC256(secret);
@@ -22,11 +21,10 @@ public class TokenParser {
         this(AuthenticationStore.getMainSecret());
     }
 
-    @SuppressWarnings("unchecked")
-    public <V> V parseToken(String token){
+    public <V> V parseToken(String token, Class<V> type){
         try{
             DecodedJWT jwt = verifier.verify(token);
-            V object = (V) type.getDeclaredConstructor().newInstance();
+            V object = type.getDeclaredConstructor().newInstance();
             AnnotationReader.setSubject(object, jwt.getSubject());
             AnnotationReader.setClaims(object, jwt.getClaims());
             return object;

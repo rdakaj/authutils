@@ -1,4 +1,4 @@
-package com.rafaeldakaj.authutils;
+package com.rafaeldakaj.authutils.token;
 
 import java.util.Map;
 
